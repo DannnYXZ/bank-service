@@ -24,24 +24,24 @@ create table disability
 
 create table marital_status
 (
-    id   int auto_increment
+    id     int auto_increment
         primary key,
-    name varchar(1024) not null
+    status varchar(1024) not null
 );
 
 create table client
 (
     id                      int auto_increment
         primary key,
-    id_number               int                        not null,
+    id_number               varchar(128)               not null,
     first_name              varchar(256)               not null,
     second_name             varchar(256)               not null,
     patronymic              varchar(256)               not null,
     birth_date              date                       not null,
     birth_place             varchar(1024)              not null,
     gender                  enum ('M', 'F')            not null,
-    passport_series         varchar(512)               not null,
-    passport_number         varchar(512)               not null,
+    passport_series         varchar(8)                 not null,
+    passport_number         varchar(16)                not null,
     passport_issuer         varchar(2048)              not null,
     passport_issue_date     date                       not null,
     live_city               int                        not null,
@@ -58,6 +58,8 @@ create table client
     monthly_income_currency enum ('USD', 'BYN', 'RUB') null,
     constraint client_id_number_uindex
         unique (id_number),
+    constraint client_passport_series_passport_number_uindex
+        unique (passport_series, passport_number),
     constraint client_citizenship_id_fk
         foreign key (citizenship) references citizenship (id)
             on update cascade,
@@ -74,4 +76,3 @@ create table client
         foreign key (marital_status) references marital_status (id)
             on update cascade
 );
-
