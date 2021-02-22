@@ -4,15 +4,18 @@ import com.dannnyxz.bank.entity.Gender;
 import java.time.LocalDate;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ClientRequestDto {
+public class ClientRequest {
 
     private Integer id;
     @NotBlank
@@ -29,6 +32,7 @@ public class ClientRequestDto {
     private String birthPlace;
     @NotNull
     private Gender gender;
+    private Integer passportId;
     @NotBlank
     private String passportSeries;
     @NotBlank
@@ -50,6 +54,8 @@ public class ClientRequestDto {
     private String email;
     @NotNull
     private Integer residenceCityId;
+    @NotEmpty
+    private String residenceAddress;
     @NotNull
     private Integer maritalStatusId;
     @NotNull

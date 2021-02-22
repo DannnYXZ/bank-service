@@ -2,6 +2,7 @@ package com.dannnyxz.bank.entity;
 
 
 import java.time.LocalDate;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -31,9 +32,6 @@ public class Client {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "id_number")
-    private String idNumber;
-
     @Column(name = "first_name")
     private String firstName;
 
@@ -53,17 +51,9 @@ public class Client {
     @Column(name = "gender")
     private Gender gender;
 
-    @Column(name = "passport_series")
-    private String passportSeries;
-
-    @Column(name = "passport_number")
-    private String passportNumber;
-
-    @Column(name = "passport_issuer")
-    private String passportIssuer;
-
-    @Column(name = "passport_issue_date")
-    private LocalDate passportIssueDate;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "passport_id", referencedColumnName = "id")
+    private Passport passport;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "live_city_id", referencedColumnName = "id")
@@ -84,6 +74,9 @@ public class Client {
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "residence_city_id", referencedColumnName = "id")
     private City residenceCity;
+
+    @Column(name = "residence_address")
+    private String residenceAddress;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "marital_status_id", referencedColumnName = "id")
