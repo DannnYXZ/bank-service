@@ -1,0 +1,7 @@
+DB_MYSQL_USERNAME: root
+DB_MYSQL_PASSWORD: root
+logging:
+  level:
+    org:
+      hibernate:
+        type: TRACE
