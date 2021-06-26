@@ -1,0 +1,8 @@
+steps:
+  - name: gradle:7.1.0-jdk11
+    entrypoint: gradle
+    args: [ 'build' ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/$_APP_NAME', '.' ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'push', 'gcr.io/$PROJECT_ID/$_APP_NAME:latest' ]

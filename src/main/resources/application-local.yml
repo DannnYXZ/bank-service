@@ -1,3 +1,6 @@
+PORT: 8080
+GCP_SQL_ENABLED: false
+DB_MYSQL_URL: jdbc:mysql://localhost/bank?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
 DB_MYSQL_USERNAME: root
 DB_MYSQL_PASSWORD: root
 logging:

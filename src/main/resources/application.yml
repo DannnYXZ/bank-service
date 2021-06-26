@@ -1,6 +1,12 @@
 spring:
+  cloud:
+    gcp:
+      sql:
+        enabled: ${GCP_SQL_ENABLED}
+        database-name: ${DB_MYSQL_NAME}
+        instance-connection-name: ${DB_MYSQL_INSTANCE_CONNECTION_NAME}
   datasource:
-    url: jdbc:mysql://localhost/bank?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
+    url: ${DB_MYSQL_URL}
     username: ${DB_MYSQL_USERNAME}
     password: ${DB_MYSQL_PASSWORD}
   jpa:
@@ -9,5 +15,4 @@ spring:
         show_sql: true
         format_sql: true
 server:
-  servlet:
-    context-path: /bank
+  port: ${PORT}
