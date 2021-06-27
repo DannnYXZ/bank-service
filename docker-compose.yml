@@ -16,6 +16,7 @@ services:
       - mysql
     image: bank-service:latest
     environment:
+      - "BASE_URL=/bank"
       - "PORT=8080"
       - "GCP_SQL_ENABLED=false"
       - "DB_MYSQL_URL=jdbc:mysql://localhost/bank?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false"
